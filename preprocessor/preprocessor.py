@@ -334,8 +334,9 @@ class Preprocessor:
             duration[-1] += 1
         d_cumsum = F.pad(duration.cumsum(dim=0), (1, 0))
         x_avg = [
-                np.sum(mel[:, int(start):int(end)], axis=1)//np.array(end - start) if len(mel[:, int(start):int(end)]) != 0 else mel.zeros()
+                np.sum(mel[:, int(start):int(end)], axis=1)//np.array(end - start) if mel[:, int(start):int(end)].shape[1] != 0 else np.zeros(mel.shape[0], )
                 for start, end in zip(d_cumsum[:-1], d_cumsum[1:])
             ]
         x_avg = torch.from_numpy(np.array(x_avg))
         return x_avg
+
