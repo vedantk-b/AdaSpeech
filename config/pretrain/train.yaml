@@ -17,7 +17,7 @@ step:
   log_step: 500
   synth_step: 2000
   val_step: 2000
-  save_step: 20000
+  save_step: 10000
   phoneme_level_encoder_step: 60000
 ignore_layer:
   #layers: ["encoder.src_word_emb.weight", "speaker_emb.weight"]
