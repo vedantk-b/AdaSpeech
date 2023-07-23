@@ -21,8 +21,8 @@ sys.path.append("vocoder")
 from models.hifigan import Generator
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-vocoder_checkpoint_path = "data/g_02519517"
-vocoder_config = "data/config_22k.json"
+vocoder_checkpoint_path = "/content/AdaSpeech/vocoder/generator_v1"
+vocoder_config = "/content/AdaSpeech/vocoder/config.json"
 
 def get_vocoder(config, checkpoint_path):
     config = json.load(open(config, 'r', encoding='utf-8'))
@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
     # Preprocess texts
     ids = [datetime.now().strftime("%Y_%m_%d-%I_%M_%S_%p")]
-    raw_texts = "thông tấn xã thailand cho rằng china đã quá tự cao tự đại trong mối quan hệ với russia"
+    raw_texts = "I got guns in my head and they will not go"
     speakers = np.array([args.speaker_id])
     languages = np.array([args.language_id])
     text, eng_pos = convert_text_to_ipa(raw_texts.lower())
